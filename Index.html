@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>I Love You Onamika</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
+      height: 100%;
+      background: black;
+    }
+
+    video.bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      z-index: -2;
+      filter: brightness(0.4);
+    }
+
+    .flower {
+      position: fixed;
+      top: -50px;
+      width: 40px;
+      height: 40px;
+      background-image: url('https://i.ibb.co/3cvHzFz/rose.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      pointer-events: none;
+      animation: fall linear infinite;
+      z-index: 1;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .center-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+      font-size: 2.5em;
+      text-align: center;
+      font-weight: bold;
+      text-shadow: 0 0 15px #ff4081, 0 0 25px #fff;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: translate(-50%, -50%) scale(1); }
+      50% { transform: translate(-50%, -50%) scale(1.1); }
+      100% { transform: translate(-50%, -50%) scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🌟 Romantic Background Video -->
+  <video class="bg-video" autoplay loop muted playsinline>
+    <source src="https://cdn.pixabay.com/video/2024/01/14/198126-906782061_large.mp4" type="video/mp4">
+  </video>
+
+  <!-- ❤️ Main Text -->
+  <div class="center-text">
+    I Love You<br>Onamika 👀🫶
+  </div>
+
+  <!-- 🌹 Flower Fall Script -->
+  <script>
+    function createFlower() {
+      const flower = document.createElement('div');
+      flower.classList.add('flower');
+      flower.style.left = Math.random() * 100 + 'vw';
+      flower.style.animationDuration = (3 + Math.random() * 5) + 's';
+      document.body.appendChild(flower);
+
+      setTimeout(() => flower.remove(), 8000);
+    }
+
+    setInterval(createFlower, 250);
+  </script>
+
+</body>
+</html>

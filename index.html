@@ -1,99 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>I Love You </title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      font-family: 'Segoe UI', sans-serif;
-      height: 100%;
-      background: black;
-    }
-
-    video.bg-video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      min-width: 100%;
-      min-height: 100%;
-      object-fit: cover;
-      z-index: -2;
-      filter: brightness(0.4);
-    }
-
-    .flower {
-      position: fixed;
-      top: -50px;
-      width: 40px;
-      height: 40px;
-      background-image: url('https://i.ibb.co/3cvHzFz/rose.png');
-      background-size: contain;
-      background-repeat: no-repeat;
-      pointer-events: none;
-      animation: fall linear infinite;
-      z-index: 1;
-    }
-
-    @keyframes fall {
-      0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(100vh) rotate(360deg);
-        opacity: 0;
-      }
-    }
-
-    .center-text {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: #fff;
-      font-size: 2.5em;
-      text-align: center;
-      font-weight: bold;
-      text-shadow: 0 0 15px #ff4081, 0 0 25px #fff;
-      animation: pulse 1.5s infinite;
-    }
-
-    @keyframes pulse {
-      0% { transform: translate(-50%, -50%) scale(1); }
-      50% { transform: translate(-50%, -50%) scale(1.1); }
-      100% { transform: translate(-50%, -50%) scale(1); }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>পুতুল ফানি ভাইরাল পুতুল গোলা</title>
+    <style>
+        body {
+            background-color: #ffebee;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        
+        .container {
+            text-align: center;
+            position: relative;
+        }
+        
+        .love-text {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #e91e63;
+            text-shadow: 3px 3px 0 #ffc107, 6px 6px 0 #4caf50;
+            animation: pulse 1.5s infinite alternate;
+            margin-bottom: 30px;
+        }
+        
+        .puppet {
+            font-size: 2rem;
+            color: #9c27b0;
+            margin-bottom: 20px;
+            animation: dance 2s infinite;
+        }
+        
+        .hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            top: 0;
+            left: 0;
+        }
+        
+        .heart {
+            position: absolute;
+            font-size: 1.5rem;
+            color: #ff4081;
+            animation: float 5s linear infinite;
+            opacity: 0;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+        
+        @keyframes dance {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-500px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <div class="puppet">পুতুল ফানি ভাইরাল পুতুল গোলা 💃</div>
+        <div class="love-text">I love you Onamika 👀🫶</div>
+        
+        <div class="hearts" id="hearts"></div>
+    </div>
 
-  <!-- 🌟 Romantic Background Video -->
-  <video class="bg-video" autoplay loop muted playsinline>
-    <source src="https://cdn.pixabay.com/video/2024/01/14/198126-906782061_large.mp4" type="video/mp4">
-  </video>
-
-  <!-- ❤️ Main Text -->
-  <div class="center-text">
-    I Love You<br>Onamika 👀🫶
-  </div>
-
-  <!-- 🌹 Flower Fall Script -->
-  <script>
-    function createFlower() {
-      const flower = document.createElement('div');
-      flower.classList.add('flower');
-      flower.style.left = Math.random() * 100 + 'vw';
-      flower.style.animationDuration = (3 + Math.random() * 5) + 's';
-      document.body.appendChild(flower);
-
-      setTimeout(() => flower.remove(), 8000);
-    }
-
-    setInterval(createFlower, 250);
-  </script>
-
+    <script>
+        // Create floating hearts
+        function createHearts() {
+            const heartsContainer = document.getElementById('hearts');
+            const heartCount = 50;
+            
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.innerHTML = '❤️';
+                heart.classList.add('heart');
+                
+                // Random position and animation delay
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 5 + 's';
+                heart.style.animationDuration = 3 + Math.random() * 7 + 's';
+                
+                heartsContainer.appendChild(heart);
+            }
+        }
+        
+        // Initialize
+        window.onload = function() {
+            createHearts();
+        };
+    </script>
 </body>
 </html>
